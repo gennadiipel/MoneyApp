@@ -1,1 +1,35 @@
-<p>login-page works!</p>
+<mat-card color="warn">
+    <form [formGroup]="loginForm" (submit)="submit()">
+        <mat-card-header>
+            <h2>Log in</h2>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Your email</mat-label>
+                    <input formControlName="email" matInput placeholder="n.s@mail.com">
+                    <mat-icon matSuffix>perm_identity</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').errors?.required">
+                        This field must be filled
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('email').errors?.email">
+                        Must be a valid email address
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Your password</mat-label>
+                    <input formControlName="password" matInput placeholder="******" type="password">
+                    <mat-icon matSuffix>perm_identity</mat-icon>
+                    <mat-error *ngIf="loginForm.get('password').errors?.required">
+                        This field must be filled
+                    </mat-error>
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit()" [disabled]="loginForm.invalid || isFormSending">Log in</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
