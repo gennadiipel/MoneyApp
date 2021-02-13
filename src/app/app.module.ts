@@ -11,8 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialSharedModule } from './shared/modules/material-shared.module';
-
-
+import { AuthService } from './shared/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 @NgModule({
@@ -29,10 +30,13 @@ import { MaterialSharedModule } from './shared/modules/material-shared.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-
+    HttpClientModule,
     MaterialSharedModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
