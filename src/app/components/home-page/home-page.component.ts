@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
+  selectedMonth: string = 'February'
+
   constructor() { }
 
   ngOnInit(): void {

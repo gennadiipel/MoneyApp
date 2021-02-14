@@ -54,7 +54,7 @@ export class LoginPageComponent implements OnInit {
     this._authService.login(user)
       .subscribe(response => {
         this.isFormSending = false
-        console.log(response)
+        this._router.navigate(['/'])
       }, () => {
         this.isFormSending = false
       })

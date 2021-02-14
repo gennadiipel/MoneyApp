@@ -5,7 +5,7 @@ import { User } from "../interfaces/user.interface";
 
 import { catchError, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
 
 
 @Injectable()
@@ -16,7 +16,6 @@ export class AuthService {
 
   constructor(
     private _httpClient: HttpClient,
-    private _matSnackBar: MatSnackBar
   ) { }
 
 

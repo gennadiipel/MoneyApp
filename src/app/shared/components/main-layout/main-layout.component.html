@@ -1,5 +1,11 @@
 <mat-toolbar color="primary">
     MoneyApp
+    <span class="spacer"></span>
+    <div class="action-buttons-container" *ngIf="authService.isAuthenticated()">
+        <button mat-icon-button aria-label="Log out icon" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
 </mat-toolbar>
 <div class="container">
     <router-outlet></router-outlet>

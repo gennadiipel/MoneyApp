@@ -14,6 +14,7 @@ import { MaterialSharedModule } from './shared/modules/material-shared.module';
 import { AuthService } from './shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { FlexModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialSharedModule
+    MaterialSharedModule,
+    FlexModule
   ],
   providers: [
     AuthService,
