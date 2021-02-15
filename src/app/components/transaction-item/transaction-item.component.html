@@ -1,1 +1,21 @@
-<p>transaction-item works!</p>
+<div class="wrapper">
+    <div class="inner">
+        <div fxFlex="30">
+            <div><b class="title">Lidl</b></div>
+            <div><span class="date">{{ date | appDate }}</span></div>
+        </div>
+        <div fxFlex="60">
+            <div class="chip-list-container">
+                <mat-chip-list>
+                    <mat-chip>Food</mat-chip>
+                    <mat-chip>Market</mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+        <div fxFlex="10">
+            <button mat-mini-fab color="warn" aria-label="Delete transaction">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

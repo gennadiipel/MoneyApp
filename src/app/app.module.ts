@@ -18,7 +18,8 @@ import { TransactionItemComponent } from './components/transaction-item/transact
 import { IncomesComponent } from './components/incomes/incomes.component';
 import { NewTransactionPageComponent } from './components/new-transaction-page/new-transaction-page.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
-
+import { TransactionDatePipe } from './shared/pipes/transaction-date.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
     MainLayoutComponent,
     HomePageComponent,
     LoginPageComponent,
-
+    TransactionDatePipe,
     TransactionItemComponent,
     NewTransactionPageComponent,
     IncomesComponent,
@@ -40,11 +41,12 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialSharedModule,
-    FlexModule
+    FlexModule,
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
