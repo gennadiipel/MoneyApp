@@ -1,49 +1,47 @@
-<form [formGroup]="newTransactionForm">
+<form [formGroup]="newTransactionForm" (submit)="addTransaction()" #newTransactionFormVC="ngForm">
 	<p>
 		<mat-form-field appearance="outline">
 			<mat-label>Title</mat-label>
-			<input autocomplete="off" matInput placeholder="Bread">
+			<input autocomplete="off" matInput placeholder="Bread" formControlName="title">
 			<mat-icon matSuffix>mode</mat-icon>
+			<mat-error *ngIf="newTransactionForm.get('title').errors?.required">This field is required</mat-error>
+			<mat-error *ngIf="newTransactionForm.get('title').errors?.minlength">Minimal length is {{ newTransactionForm.get('title').errors?.minlength.requiredLength }}</mat-error>
+			<mat-error *ngIf="newTransactionForm.get('title').errors?.maxlength">Maximum length is {{ newTransactionForm.get('title').errors?.maxlength.requiredLength }}</mat-error>
 		</mat-form-field>
 	</p>
 	<p>
 		<mat-form-field appearance="outline">
 			<mat-label>Amount</mat-label>
-			<input autocomplete="off" matInput placeholder="1.93" type="number">
+			<input autocomplete="off" matInput placeholder="1.93" type="number" formControlName="amount">
 			<mat-icon matSuffix>euro_symbol</mat-icon>
+			<mat-error *ngIf="newTransactionForm.get('amount').errors?.required">This field is required</mat-error>
 		</mat-form-field>
 	</p>
 	<p>
 		<mat-form-field appearance="outline">
 			<mat-label>Choose a date</mat-label>
-			<input autocomplete="off" matInput [matDatepicker]="datepicker">
+			<input autocomplete="off" matInput [matDatepicker]="datepicker" formControlName="date">
+			<mat-error *ngIf="newTransactionForm.get('date').errors?.required">This field is required</mat-error>
 			<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
 			<mat-datepicker #datepicker>
 			</mat-datepicker>
 		</mat-form-field>
 	</p>
-	<!-- <p>
-		<mat-form-field appearance="outline" fxFlex="80">
+	<p>
+		<mat-form-field class="example-chip-list" appearance="outline">
 			<mat-label>Tag name</mat-label>
-			<input autocomplete="off" matInput placeholder="Food">
-			<mat-icon matSuffix>sell</mat-icon>
+			<mat-chip-list #tagList aria-label="Tags">
+				<mat-chip *ngFor="let tag of tags" [selectable]="true" [removable]="true" (removed)="removeTag(tag)">
+					{{tag}}
+					<mat-icon matChipRemove>cancel</mat-icon>
+				</mat-chip>
+				<input formControlName="tagName" placeholder="New tag..." [matChipInputFor]="tagList"
+					[matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+					(matChipInputTokenEnd)="addTag($event)">
+			</mat-chip-list>
 		</mat-form-field>
-		<span fxFlex="4"></span>
-		<button mat-raised-button color="primary" fxFlex="16" class="add-tag-button">Add a tag</button>
-	</p> -->
-	<mat-form-field class="example-chip-list">
-		<mat-label>Favorite Fruits</mat-label>
-		<mat-chip-list #tagList aria-label="Fruit selection">
-		  <mat-chip *ngFor="let tag of tags" [selectable]="true"
-				   [removable]="true" (removed)="removeTag(tag)">
-			{{tag.name}}
-			<mat-icon matChipRemove>cancel</mat-icon>
-		  </mat-chip>
-		  <input placeholder="New tag..."
-				 [matChipInputFor]="tagList"
-				 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-				 [matChipInputAddOnBlur]="true"
-				 (matChipInputTokenEnd)="addTag($event)">
-		</mat-chip-list>
-	  </mat-form-field>
+	</p>
+	<p>
+		<button mat-raised-button color="primary" type="submit" [disabled]="sending || newTransactionForm.invalid">Add</button>
+	</p>
 </form>

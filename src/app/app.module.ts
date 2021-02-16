@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialSharedModule } from './shared/modules/material-shared.module';
 import { AuthService } from './shared/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { FlexModule } from '@angular/flex-layout';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
@@ -20,6 +20,15 @@ import { NewTransactionPageComponent } from './components/new-transaction-page/n
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { TransactionDatePipe } from './shared/pipes/transaction-date.pipe';
 import { DatePipe } from '@angular/common';
+import { TransactionsSevice } from './shared/services/transactions.service';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -47,6 +56,8 @@ import { DatePipe } from '@angular/common';
     AuthService,
     AuthGuard,
     DatePipe,
+    TransactionsSevice,
+    INTERCEPTOR_PROVIDER
   ],
   bootstrap: [AppComponent]
 })

@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
 import { Router } from "@angular/router";
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class AuthService {
 

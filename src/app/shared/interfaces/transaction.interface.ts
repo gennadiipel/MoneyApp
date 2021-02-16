@@ -1,7 +1,7 @@
 export interface Transaction {
-    key: string,
+    key?: string,
     title: string,
     amount: number
     date: Date,
-    tags: string[],
+    tags?: string[],
 }
