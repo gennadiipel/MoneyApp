@@ -1,1 +1,49 @@
-<p>new-transaction-page works!</p>
+<form [formGroup]="newTransactionForm">
+	<p>
+		<mat-form-field appearance="outline">
+			<mat-label>Title</mat-label>
+			<input autocomplete="off" matInput placeholder="Bread">
+			<mat-icon matSuffix>mode</mat-icon>
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field appearance="outline">
+			<mat-label>Amount</mat-label>
+			<input autocomplete="off" matInput placeholder="1.93" type="number">
+			<mat-icon matSuffix>euro_symbol</mat-icon>
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field appearance="outline">
+			<mat-label>Choose a date</mat-label>
+			<input autocomplete="off" matInput [matDatepicker]="datepicker">
+			<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+			<mat-datepicker #datepicker>
+			</mat-datepicker>
+		</mat-form-field>
+	</p>
+	<!-- <p>
+		<mat-form-field appearance="outline" fxFlex="80">
+			<mat-label>Tag name</mat-label>
+			<input autocomplete="off" matInput placeholder="Food">
+			<mat-icon matSuffix>sell</mat-icon>
+		</mat-form-field>
+		<span fxFlex="4"></span>
+		<button mat-raised-button color="primary" fxFlex="16" class="add-tag-button">Add a tag</button>
+	</p> -->
+	<mat-form-field class="example-chip-list">
+		<mat-label>Favorite Fruits</mat-label>
+		<mat-chip-list #tagList aria-label="Fruit selection">
+		  <mat-chip *ngFor="let tag of tags" [selectable]="true"
+				   [removable]="true" (removed)="removeTag(tag)">
+			{{tag.name}}
+			<mat-icon matChipRemove>cancel</mat-icon>
+		  </mat-chip>
+		  <input placeholder="New tag..."
+				 [matChipInputFor]="tagList"
+				 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				 [matChipInputAddOnBlur]="true"
+				 (matChipInputTokenEnd)="addTag($event)">
+		</mat-chip-list>
+	  </mat-form-field>
+</form>
