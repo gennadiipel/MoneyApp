@@ -22,6 +22,7 @@ import { TransactionDatePipe } from './shared/pipes/transaction-date.pipe';
 import { DatePipe } from '@angular/common';
 import { TransactionsSevice } from './shared/services/transactions.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { TransactionListComponent } from './shared/components/transaction-list/transaction-list.component';
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -38,6 +39,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     LoginPageComponent,
     TransactionDatePipe,
     TransactionItemComponent,
+    TransactionListComponent,
     NewTransactionPageComponent,
     IncomesComponent,
     ExpensesComponent,

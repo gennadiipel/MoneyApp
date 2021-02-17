@@ -1,1 +1,4 @@
-<p>expenses works!</p>
+<app-transaction-list *ngIf="transactions; else loading" [transactions]="transactions"></app-transaction-list>
+<ng-template #loading>
+    <mat-spinner diameter="30"></mat-spinner>
+</ng-template>

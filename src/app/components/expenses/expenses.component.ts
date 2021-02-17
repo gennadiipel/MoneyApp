@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Transaction } from 'src/app/shared/interfaces/transaction.interface';
+import { TransactionsSevice } from 'src/app/shared/services/transactions.service';
 
 @Component({
   selector: 'app-expenses',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpensesComponent implements OnInit {
 
-  constructor() { }
+  transactions: Transaction[]
+
+  constructor(
+    private _transactionsService: TransactionsSevice
+  ) { }
 
   ngOnInit(): void {
+    this._transactionsService.get(false)
+    .subscribe(response => {
+      this.transactions = response
+    })
   }
 
 }

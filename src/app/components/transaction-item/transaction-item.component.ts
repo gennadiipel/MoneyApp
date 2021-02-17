@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Transaction } from 'src/app/shared/interfaces/transaction.interface';
 
 @Component({
   selector: 'app-transaction-item',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionItemComponent implements OnInit {
 
+  @Input() transaction: Transaction
+  
   date = new Date()
 
   constructor() { }

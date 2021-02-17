@@ -1,14 +1,16 @@
 <div class="wrapper">
     <div class="inner">
         <div fxFlex="30">
-            <div><b class="title">Lidl</b></div>
-            <div><span class="date">{{ date | appDate }}</span></div>
+            <div>
+                <b class="title">{{ transaction.title }}</b>
+                <span class="amount">{{ (transaction.isIncome) ? transaction.amount : transaction.amount * -1 }}€</span>
+            </div>
+            <div><span class="date">{{ transaction.date | appDate }}</span></div>
         </div>
         <div fxFlex="60">
             <div class="chip-list-container">
-                <mat-chip-list>
-                    <mat-chip>Food</mat-chip>
-                    <mat-chip>Market</mat-chip>
+                <mat-chip-list *ngIf="transaction?.tags">
+                    <mat-chip *ngFor="let tag of transaction.tags">{{ tag }}</mat-chip>
                 </mat-chip-list>
             </div>
         </div>
