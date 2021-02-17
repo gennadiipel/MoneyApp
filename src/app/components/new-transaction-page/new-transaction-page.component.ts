@@ -19,6 +19,7 @@ export class NewTransactionPageComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   tags: string[] = []
   sending: boolean = false
+  isIncome: boolean = true
 
   constructor(
     private _matSnackbar: MatSnackBar,
@@ -63,7 +64,8 @@ export class NewTransactionPageComponent implements OnInit {
 
     const transaction: Transaction = {
       ...tempFormValues,
-      tags: this.tags
+      tags: this.tags,
+      isIncome: this.isIncome
     }
 
     this.sending = true

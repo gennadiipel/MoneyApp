@@ -4,4 +4,5 @@ export interface Transaction {
     amount: number
     date: Date,
     tags?: string[],
+    isIncome?: boolean
 }

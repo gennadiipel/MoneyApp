@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Transaction } from '../../interfaces/transaction.interface';
 
 @Component({
   selector: 'app-transaction-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transaction-list.component.sass']
 })
 export class TransactionListComponent implements OnInit {
+
+  @Input() transactions: Transaction[]
 
   constructor() { }
 

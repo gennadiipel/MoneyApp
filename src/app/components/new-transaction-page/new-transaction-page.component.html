@@ -42,6 +42,14 @@
 		</mat-form-field>
 	</p>
 	<p>
+		<button
+		class="type-button"
+		mat-raised-button
+		[color]="(isIncome) ? 'basic' : 'warn'"
+		(click)="isIncome = !isIncome"
+		type="button">
+		{{ (isIncome) ? 'Income' : 'Expense' }}
+		</button>
 		<button mat-raised-button color="primary" type="submit" [disabled]="sending || newTransactionForm.invalid">Add</button>
 	</p>
 </form>
