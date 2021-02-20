@@ -15,4 +15,8 @@ export class TransactionListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deleteFromList(transaction: Transaction) {
+    this.transactions = this.transactions.filter(t => t.key != transaction.key)
+  }
+
 }

@@ -34,4 +34,8 @@ export class TransactionsSevice {
         
     }
 
+    delete(key: string): Observable<void> {
+        return this._httpClient.delete<void>(`${environment.fbBaseHost}/transactions/${key}.json`)
+    }
+
 }

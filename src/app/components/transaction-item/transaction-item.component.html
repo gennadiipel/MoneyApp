@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" [@deleteTransactionAnimation]="deleteAnimationState" (@deleteTransactionAnimation.done)="onAnimationDone($event)">
     <div class="inner">
         <div fxFlex="30">
             <div>
@@ -9,13 +9,14 @@
         </div>
         <div fxFlex="60">
             <div class="chip-list-container">
-                <mat-chip-list *ngIf="transaction?.tags">
+                <mat-chip-list *ngIf="transaction?.tags && !deleting">
                     <mat-chip *ngFor="let tag of transaction.tags">{{ tag }}</mat-chip>
                 </mat-chip-list>
+                <mat-progress-bar *ngIf="deleting" mode="indeterminate"></mat-progress-bar>
             </div>
         </div>
         <div fxFlex="10">
-            <button mat-mini-fab color="warn" aria-label="Delete transaction">
+            <button mat-mini-fab color="warn" aria-label="Delete transaction" (click)="deleteTransaction()" [disabled]="deleting">
                 <mat-icon>delete</mat-icon>
             </button>
         </div>
