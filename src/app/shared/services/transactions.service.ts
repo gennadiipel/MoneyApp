@@ -27,7 +27,7 @@ export class TransactionsSevice {
                 })) : []
             }),
             map((transactions: Transaction[]) => {
-                return transactions.filter((transaction: Transaction) => transaction.isIncome == isIncomes)
+                return transactions.filter((transaction: Transaction) => transaction.isIncome == isIncomes).reverse()
             })
         )
         

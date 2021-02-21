@@ -30,9 +30,9 @@ export class NewTransactionPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.newTransactionForm = new FormGroup({
-      'title': new FormControl('sdfsdfsdf', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]),
-      'amount': new FormControl('234', [Validators.required]),
-      'date': new FormControl(new Date(), Validators.required),
+      'title': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(32)]),
+      'amount': new FormControl('', [Validators.required]),
+      'date': new FormControl('', Validators.required),
       'tagName': new FormControl('')
     })
   }

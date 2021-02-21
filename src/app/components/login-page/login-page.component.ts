@@ -28,15 +28,13 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-
     if (this._authService.isAuthenticated()) {
       this._router.navigate(['/'])
     }
 
     this.loginForm = new FormGroup({
-      'email': new FormControl('admin@gmail.com', [Validators.required, Validators.email]),
-      'password': new FormControl('123123', Validators.required)
+      'email': new FormControl('', [Validators.required, Validators.email]),
+      'password': new FormControl('', Validators.required)
     })
 
     this.authErrorSubscription = this._authService.error$.subscribe(error => {
